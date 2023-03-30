@@ -16,9 +16,8 @@ jobs:
           separator: "/"
           msg: ${{github.ref_name}}
       - name: Set envs
-        run:
-          echo "APP_NAME=${{ steps.split.outputs._0 }}" >> $GITHUB_ENV
-          echo "APP_VERSION=${{ steps.split.outputs._1 }}" >> $GITHUB_ENV
+        run: echo "APP_NAME=${{ steps.split.outputs._0 }}" >> $GITHUB_ENV
+          echo "APP_TAG=${{ steps.split.outputs._1 }}" >> $GITHUB_ENV
       - uses: actions/checkout@v3
 
       - name: Set up Go
@@ -33,4 +32,4 @@ jobs:
         run: make build
 
       - name: Deploy
-        run: make deploy
+        run: echo "Deploying ${{ env.APP_NAME }} with tag ${{ env.APP_TAG }}"
