@@ -3,6 +3,7 @@ SHELL=/bin/sh
 export GO111MODULE=on
 
 GOOS := $(or $(GOOS), '')
+app := ${APP_NAME}
 
 .PHONY: test
 test:
@@ -16,7 +17,7 @@ deps:
 
 .PHONY: app-deps
 app-deps:
-	cd ./${APP_NAME}
+	cd ./${app}
 	go mod download
 	go mod tidy
 	cd ..
@@ -28,4 +29,4 @@ lint:
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 GOOS=${GOOS} go build -o bin/${APP_NAME} ${APP_NAME}/cmd/*.go
+	CGO_ENABLED=0 GOOS=${GOOS} go build -o bin/${app} ${app}/cmd/*.go
