@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/eugeneradionov/monorepo-template/api/handlers"
+	"monorepo-template/api/handlers"
 )
 
 func main() {

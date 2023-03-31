@@ -1,3 +1,8 @@
-module github.com/eugeneradionov/monorepo-template/worker
+module monorepo-template/worker
 
 go 1.20
+
+
+require monorepo-template/pkg v0.0.0-00010101000000-000000000000
+
+replace monorepo-template/pkg => ../pkg
